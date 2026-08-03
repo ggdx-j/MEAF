@@ -1,0 +1,27 @@
+\documentclass[runningheads]{llncs}
+
+\usepackage{eccv}
+\usepackage{eccvabbrv}
+\usepackage[accsupp]{axessibility}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{W-MEAF for Advertisement Video QA}
+\titlerunning{W-MEAF for Advertisement Video QA}
+
+\author{Team kgdxzj}
+\authorrunning{Team kgdxzj}
+\institute{}
+
+\maketitle
+
+\section*{Methodology}
+
+Whisper-Guided Multi-Path Evidence and Answer Fusion (W-MEAF) is a test-time reasoning pipeline for advertisement video QA. It uses Qwen2.5-VL-7B-Instruct as the multimodal backbone and faster-whisper base for speech transcription. The final submitted score is \textbf{0.6495}. For each sample, OpenCV decodes video frames, faster-whisper transcribes narration, and Qwen2.5-VL constructs a compact evidence brief covering product identity, visual demonstrations, readable text, spoken claims, offer terms, and consumer benefits before generating an answer.
+
+W-MEAF generates three complementary branch answers. \textbf{Dense Keyframe Evidence} combines 8 uniformly sampled frames with visually scored keyframes sampled at 1 fps, retaining up to 16 frames at 589,824 pixels per frame. Keyframes are selected by sharpness, edge density, motion, late-video position, temporal separation, and average-hash diversity. \textbf{Reranked Candidate Selection} uses the same dense visual-audio evidence, generates three candidate answers with temperature 0.4 and top-p 0.9, and selects one answer using a deterministic judge prompt. \textbf{Duration-Adaptive Evidence} samples 6, 8, 10, or 12 lower-resolution frames according to video length, using a 262,144-pixel budget to preserve global temporal context.
+
+\textbf{Conservative Answer Fusion} is a text-only Qwen2.5-VL stage. It receives the three branch answers for each of the 3,108 samples, treats the reranked answer as the primary hypothesis, and adds complementary details only when they are consistent and question-relevant. The key idea is branch-level evidence diversification followed by conservative fusion: dense keyframes capture short informative moments, duration-adaptive sampling covers long-range context, reranking improves answer selection, and Whisper supplies spoken advertisement claims within a 7B-class inference budget.
+
+\end{document}

@@ -1,0 +1,23 @@
+{
+  "dtype": "auto",
+  "device_map": "auto",
+  "temperature": 0.0,
+  "top_p": 0.9,
+  "max_new_tokens_evidence": 200,
+  "max_new_tokens_final": 150,
+  "max_new_tokens_judge": 150,
+  "final_candidate_count": 3,
+  "final_candidate_temperature": 0.4,
+  "final_candidate_top_p": 0.9,
+  "max_pixels": 589824,
+  "max_frames": 16,
+  "uniform_frames": 8,
+  "keyframe_candidates_per_second": 1.0,
+  "min_frame_gap_seconds": 0.5,
+  "min_hash_distance": 8,
+  "whisper_model_size": "Systran/faster-whisper-base",
+  "whisper_device": "cpu",
+  "whisper_compute_type": "int8",
+  "language": "en",
+  "voiceover_max_chars": 6000
+}

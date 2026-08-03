@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Data, models, and outputs
+data/
+weights/
+outputs/
+*.jsonl
+!MAC_QA.example.jsonl
+
+# Logs and caches
+*.log
+.cache/
+
+# LaTeX build artifacts
+paper-template-Latest/*.aux
+paper-template-Latest/*.bbl
+paper-template-Latest/*.blg
+paper-template-Latest/*.fls
+paper-template-Latest/*.fdb_latexmk
+paper-template-Latest/*.log
+paper-template-Latest/*.out
+paper-template-Latest/*.synctex.gz
+
+# OS/editor
+.DS_Store
+.vscode/
